@@ -1,0 +1,30 @@
+server:
+  port: 8181
+spring:
+  application:
+    name: kafka-streams
+  cloud:
+    config:
+      uri: http://localhost:9999
+    stream:
+      bindings:
+        input-channel-1:
+          destination: users
+      kafka:
+        streams:
+          binder:
+            applicationId: kafkastreams
+            broker: localhost:9092
+            configuration:
+              key:
+                serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+              value:
+                serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+  output:
+    ansi:
+      enabled: always
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8282/eureka}

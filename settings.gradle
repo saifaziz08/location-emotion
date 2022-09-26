@@ -1,0 +1,10 @@
+include 'components:zuul'
+include 'components:eureka'
+include 'components:cloud-config'
+include 'components:kafka-streams'
+
+rootProject.name = 'zuulreka-config'
+include 'zuul'
+include 'kafka-streams'
+include 'cloud-config'
+include 'eureka'
