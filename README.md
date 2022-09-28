@@ -49,5 +49,5 @@
  
  Send a post request to http://localhost:8080/kafka-streams
  + with picture/longitude/latitude
- -> output will be it processes on a picture and populates the storage with metrics about facial expressions using a variety of different algorithms.
- -> for now as an example only randomly generated metrics are created.
+ + output will be it processes on a picture and populates the storage with metrics about facial expressions using a variety of different algorithms.
+ + for now as an example only randomly generated metrics are created.
