@@ -48,6 +48,6 @@
  + __zuul cloud-config__ --> http://localhost:9999/zuul/default
  
  Send a post request to http://localhost:8080/kafka-streams
- + with picture/longitude/latitude
+ + with picture as part of the body and longitude/latitude as request parameters
  + output will be it processes on a picture and populates the storage with metrics about facial expressions using a variety of different algorithms.
  + for now as an example only randomly generated metrics are created.
