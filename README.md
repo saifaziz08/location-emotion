@@ -41,9 +41,9 @@
 
  + __eureka registry__ --> http://localhost:8282
  
- + __netflix-protected without zuul__ --> http://localhost:8181/hello
+ + __kafka-streams without zuul__ --> http://localhost:8181/hello
  
- + __netflix-protected with zuul__ --> http://localhost:8080/kafka-streams/hello
+ + __kafka-streams with zuul__ --> http://localhost:8080/kafka-streams/hello
  
  + __zuul cloud-config__ --> http://localhost:9999/zuul/default
  
