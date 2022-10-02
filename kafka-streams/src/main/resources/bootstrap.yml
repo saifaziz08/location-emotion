@@ -3,13 +3,23 @@ server:
 spring:
   application:
     name: kafka-streams
+  datasource:
+    username: sa
+    url: "jdbc:h2:mem:appdb"
+    driver-class-name: "org.h2.Driver"
+    password: ""
+    enabled: true
+    show-sql: true
+    path: "/h2console/"
+    ddl-auto: create
+    defer-datasource-initialization: true
   cloud:
     config:
       uri: http://localhost:9999
     stream:
       bindings:
         input-channel-1:
-          destination: users
+          destination: user
       kafka:
         streams:
           binder:
@@ -23,6 +33,12 @@ spring:
   output:
     ansi:
       enabled: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 eureka:
   client:

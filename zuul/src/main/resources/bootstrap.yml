@@ -11,6 +11,15 @@ spring:
     ansi:
       enabled: always
 
+zuul:
+  routes:
+    kafka-streams:
+      path: /**
+      url: http://localhost:8181
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 50000
+
 eureka:
   client:
     serviceUrl:

@@ -1,0 +1,13 @@
+INSERT INTO picture(requestId, longitude, latitude, username, picturePath) values ('abc', 1.11112, 1.1222, 'user', '/example-path');
+INSERT INTO picture(requestId, longitude, latitude, username, picturePath) values ('abc', 121.11112, 121.1222, 'user', '/example-path');
+INSERT INTO picture(requestId, longitude, latitude, username, picturePath) values ('abc', 311.11112, 321.1222, 'user', '/example-path');
+INSERT INTO cluster(longitude, latitude, clusterName, username, happy, sad, neutral) values (311.11112, 321.1222, 'A','user', 0.3, 0.332, 0.8);
+INSERT INTO cluster(longitude, latitude, clusterName, username, happy, sad, neutral) values (312.11112, 321.1222, 'B','user', 0.8,0.332,0.43);
+INSERT INTO cluster(longitude, latitude, clusterName, username, happy, sad, neutral) values (312.11112, 321.1222, 'C','user', 0.3,0.332,0.63);
+INSERT INTO cluster(longitude, latitude, clusterName, username, happy, sad, neutral) values (301.11112, 301.1222, 'D','user', 0.3,0.632,0.43);
+INSERT INTO metrics(requestid, clusterid, longitude, latitude, algorithm, happy, sad, neutral) values ('abcd', null, 311.11112, 321.1222, 'algo-1', 0.3,0.332,0.60);
+INSERT INTO metrics(requestId, clusterId, longitude, latitude, algorithm, happy, sad, neutral) values ('abc', null, 312.11112, 321.1222, 'algo-1', 0.3,0.332,0.60);
+INSERT INTO metrics(requestId, clusterId, longitude, latitude, algorithm, happy, sad, neutral) values ('abc', null, 33.11112, 33.1222, 'algo-1', 0.3,0.332,0.60);
+INSERT INTO metrics(requestId, clusterId, longitude, latitude, algorithm, happy, sad, neutral) values ('abc', null, 311.11112, 321.1222, 'algo-2', 0.3,0.332,0.60);
+INSERT INTO metrics(requestId, clusterId, longitude, latitude, algorithm, happy, sad, neutral) values ('abc', null, 312.11112, 321.1222, 'algo-2', 0.3,0.332,0.60);
+INSERT INTO metrics(requestId, clusterId, longitude, latitude, algorithm, happy, sad, neutral) values ('abc', null, 33.11112, 33.1222, 'algo-2', 0.3,0.332,0.60);

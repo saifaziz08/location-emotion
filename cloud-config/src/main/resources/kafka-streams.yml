@@ -1,0 +1,9 @@
+external:
+  property: hello world!
+  topic: user
+  pathToFile: 'Pictures/'
+management:
+  endpoints:
+    web:
+      exposure:
+      include: refresh

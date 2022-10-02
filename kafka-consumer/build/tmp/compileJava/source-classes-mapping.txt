@@ -1,0 +1,8 @@
+org/example/components/KafkaProcessor.java
+ org.example.components.KafkaProcessor
+org/example/services/PersistenceService.java
+ org.example.services.PersistenceService
+org/example/Main.java
+ org.example.Main
+org/example/services/FacialAlgosService.java
+ org.example.services.FacialAlgosService

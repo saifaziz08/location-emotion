@@ -1,20 +1,89 @@
 package io.template.zuulrekaconfig;
 
+import io.template.zuulrekaconfig.models.Cluster;
+import io.template.zuulrekaconfig.models.Picture;
+import io.template.zuulrekaconfig.repository.ClusterRepository;
+import io.template.zuulrekaconfig.repository.PictureRepository;
+import io.template.zuulrekaconfig.services.FileStorageService;
+import io.template.zuulrekaconfig.services.KafkaProducerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @RefreshScope
 @RestController
+@CrossOrigin(origins = "*")
 public class KafkaStreamsController {
 
-  @Value("${external.property}")
-  String property;
+    @Value("${external.property}")
+    String property;
 
-  @GetMapping("/hello")
-  public ResponseEntity<String> hello() {
-    return ResponseEntity.ok(property);
-  }
+    @Value("${external.topic}")
+    String topic;
+
+    @Value("${external.pathToFile}")
+    String pathToPictures;
+
+    @Autowired
+    ClusterRepository clusterRepository;
+
+    @Autowired
+    private KafkaProducerService kafkaProducerService;
+
+    @Autowired
+    private FileStorageService fileStorageService;
+
+    @Autowired
+    private PictureRepository pictureRepository;
+
+
+    @GetMapping("/hello")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok(property);
+    }
+
+    @GetMapping("/pictures/{user}")
+    public ResponseEntity<List<Picture>> pictures(@PathVariable("user") String user) {
+        return ResponseEntity.ok(pictureRepository.findByUser(user));
+    }
+
+    @GetMapping("/distributions/{user}")
+    public ResponseEntity<Map<String, List<Cluster>>> distribution(@PathVariable("user") String user) {
+        Map<String, List<Cluster>> distributions = new HashMap<>();
+        distributions.put("Happy", clusterRepository.getHappyClusters(user));
+        distributions.put("Neutral", clusterRepository.getNeutralClusters(user));
+        distributions.put("Sad", clusterRepository.getSadClusters(user));
+        return ResponseEntity.ok(distributions);
+    }
+
+    @PostMapping("/post")
+    public ResponseEntity ingest(@RequestBody MultipartFile picture,
+                                 @RequestParam("longitude") Double longitude,
+                                 @RequestParam("latitude") Double latitude,
+                                 @RequestParam("user") String user) {
+
+        String requestId = UUID.randomUUID().toString();
+        String path = pathToPictures + requestId;
+        fileStorageService.save(picture, path);
+        Picture pictureCapture = new Picture
+                .PictureCaptureBuilder()
+                .requestId(requestId)
+                .pathToPicture(path)
+                .longitude(longitude)
+                .latitude(latitude)
+                .username(user)
+                .build();
+
+        kafkaProducerService.send(pictureCapture, topic);
+        return ResponseEntity.status(HttpStatus.OK).body(pictureCapture);
+    }
 }

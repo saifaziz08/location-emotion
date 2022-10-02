@@ -30,6 +30,11 @@ dependencyManagement {
 }
 
 dependencies {
+    implementation 'org.projectlombok:lombok:1.18.22'
+
+    //API gateway
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+
     compile(
             "org.springframework.cloud:spring-cloud-starter-config",
             'org.springframework.cloud:spring-cloud-starter-netflix-zuul',
