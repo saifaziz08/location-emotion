@@ -7,4 +7,5 @@ include 'kafka-consumer'
 include 'scheduled-service'
 include 'scheduled-service'
 include 'common'
+include 'test-service'
 

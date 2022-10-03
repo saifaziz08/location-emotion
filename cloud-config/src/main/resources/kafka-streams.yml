@@ -1,7 +1,7 @@
 external:
   property: hello world!
   topic: user
-  pathToFile: 'Pictures/'
+  pathToFile: 'uploads/'
 management:
   endpoints:
     web:

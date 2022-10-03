@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @Service
 public class FileStorageService {
-    private final Path root = Paths.get("uploads");
+    private Path root = Paths.get("uploads");
     public void save(MultipartFile picture, String path) {
         try {
             Files.copy(picture.getInputStream(), this.root.resolve(Objects.requireNonNull(picture.getOriginalFilename())));
