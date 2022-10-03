@@ -32,6 +32,9 @@
     `cd kafka-consumer/build/libs && java -jar kafka-consumer-0.0.1-SNAPSHOT.jar`
   
   + scheduled-service _(wait for kafka-consumer)_
+  
+  
+  
 
     `cd scheduled-service/build/libs && java -jar scheduled-service-0.0.1-SNAPSHOT.jar`
 
@@ -58,3 +61,21 @@
  
  + __kafka-streams__ (send get request with username) -->  http://localhost:8080/kafka-streams/picture/user
 
+
+
+#### Microservices
++ Zuul
+    `zuul is meant for load balancing, and request authorization`
++ Eureka
+    `Eureka is meant for Service Discovery, it will show the status of all microservices`
++ Cloud-Config
+    `Service to hold values that can be shared by microservices`
++ Kafka-Consumer
+    `Service which will consume a picture and create metrics by running a facial expression recognition techniques`
++ Kafka-Service
+    `General API service called for posting/getting distributions by user and picture`
++ Scheduled-Service
+    `Service which runs in a regular time interval checking a queue to see if it needs to create clusters on new metrics`
++ Test-Service
+    `Service for testing api`
+ 
