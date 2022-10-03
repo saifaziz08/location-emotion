@@ -30,14 +30,6 @@
   + kafka-consumer _(wait for kafka-streams)_
 
     `cd kafka-consumer/build/libs && java -jar kafka-consumer-0.0.1-SNAPSHOT.jar`
-<<<<<<< HEAD
-=======
-  
-  + scheduled-service _(wait for kafka-consumer)_
-  
-  
-  
->>>>>>> 7b70deec08ef15ab5b8601c36990f2c4415235cd
 
   + scheduled-service _(wait for kafka-consumer)_
   
@@ -50,29 +42,14 @@
   `curl http://localhost:8080/kafka-streams/hello`
 + pictures send via post request are uploaded into the uploads folder
 
-#### Useful endpoints
-
-<<<<<<< HEAD
-+ __eureka registry__ --> http://localhost:8282
-
-+ __kafka-streams with zuul__ --> http://localhost:8080/kafka-streams/hello
-
-+ __zuul cloud-config__ --> http://localhost:9999/zuul/default
-
-+ __kafka-streams cloud-config__ --> http://localhost:9999/kafka-streams/default
-+ __kafka-streams__ (send post request with picture attached to body as form-data) --> http://localhost:8080/kafka-streams/post?longitude=1.0&latitude=1.0&user=sa
-
-+ __kafka-streams__ (send get request with username)
-  -> http://localhost:8080/kafka-streams/distributions/user
-
-+ __kafka-streams__ (send get request with username) -->  http://localhost:8080/kafka-streams/picture/user
 
 #### Data Model
 + Metric (Id, RequestId, Longitude, Latitude, Metric Type (one of [Sad, Happy, Neutral]), Metric Value)
 + Cluster (Id, Longitude, Latitude, Happy, Sad, Neutral, Username)
 + Picture (Id, Username, RequestId, Longitude, Latitude, pathToPicture)
 + RecalculationQueue (Id, RequestId)
-=======
+
+#### Useful endpoints
  + __eureka registry__ --> http://localhost:8282
  
  + __kafka-streams with zuul__ --> http://localhost:8080/kafka-streams/hello
@@ -87,26 +64,8 @@
  
  + __kafka-streams__ (send get request with username) -->  http://localhost:8080/kafka-streams/picture/user
 
->>>>>>> 7b70deec08ef15ab5b8601c36990f2c4415235cd
-
-
 #### Microservices
 + Zuul
-<<<<<<< HEAD
-  `zuul is meant for load balancing, and request authorization`
-+ Eureka
-  `Eureka is meant for Service Discovery, it will show the status of all microservices`
-+ Cloud-Config
-  `Service to hold values that can be shared by microservices`
-+ Kafka-Consumer
-  `Service which will consume a picture and create metrics by running a facial expression recognition techniques`
-+ Kafka-Service
-  `General API service called for posting/getting distributions by user and picture`
-+ Scheduled-Service
-  `Service which runs in a regular time interval checking a queue to see if it needs to create clusters on new metrics`
-+ Test-Service
-  `Service for testing api`
-=======
     `zuul is meant for load balancing, and request authorization`
 + Eureka
     `Eureka is meant for Service Discovery, it will show the status of all microservices`
@@ -120,5 +79,4 @@
     `Service which runs in a regular time interval checking a queue to see if it needs to create clusters on new metrics`
 + Test-Service
     `Service for testing api`
->>>>>>> 7b70deec08ef15ab5b8601c36990f2c4415235cd
  
