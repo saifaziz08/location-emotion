@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableEurekaClient
 @SpringBootApplication
-@EntityScan("io.template.zuulrekaconfig.models")
-@EnableJpaRepositories("io.template.zuulrekaconfig.repository")
+@EntityScan("org.example.models")
+@EnableJpaRepositories("org.example.repository")
 public class Main {
 
     public static void main(String[] args) {

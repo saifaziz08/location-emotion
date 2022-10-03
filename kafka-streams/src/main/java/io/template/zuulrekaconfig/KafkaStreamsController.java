@@ -1,15 +1,14 @@
 package io.template.zuulrekaconfig;
 
-import io.template.zuulrekaconfig.models.Cluster;
-import io.template.zuulrekaconfig.models.Picture;
-import io.template.zuulrekaconfig.repository.ClusterRepository;
-import io.template.zuulrekaconfig.repository.PictureRepository;
 import io.template.zuulrekaconfig.services.FileStorageService;
 import io.template.zuulrekaconfig.services.KafkaProducerService;
+import org.example.models.Cluster;
+import org.example.models.Picture;
+import org.example.repository.ClusterRepository;
+import org.example.repository.PictureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,6 +44,7 @@ public class KafkaStreamsController {
     @Autowired
     private PictureRepository pictureRepository;
 
+    public KafkaStreamsController() { }
 
     @GetMapping("/hello")
     public ResponseEntity<String> healthCheck() {
@@ -59,14 +59,14 @@ public class KafkaStreamsController {
     @GetMapping("/distributions/{user}")
     public ResponseEntity<Map<String, List<Cluster>>> distribution(@PathVariable("user") String user) {
         Map<String, List<Cluster>> distributions = new HashMap<>();
-        distributions.put("Happy", clusterRepository.getHappyClusters(user));
         distributions.put("Neutral", clusterRepository.getNeutralClusters(user));
+        distributions.put("Happy", clusterRepository.getHappyClusters(user));
         distributions.put("Sad", clusterRepository.getSadClusters(user));
         return ResponseEntity.ok(distributions);
     }
 
     @PostMapping("/post")
-    public ResponseEntity ingest(@RequestBody MultipartFile picture,
+    public ResponseEntity<Picture> ingest(@RequestBody MultipartFile picture,
                                  @RequestParam("longitude") Double longitude,
                                  @RequestParam("latitude") Double latitude,
                                  @RequestParam("user") String user) {
@@ -84,6 +84,6 @@ public class KafkaStreamsController {
                 .build();
 
         kafkaProducerService.send(pictureCapture, topic);
-        return ResponseEntity.status(HttpStatus.OK).body(pictureCapture);
+        return ResponseEntity.ok(pictureCapture);
     }
 }

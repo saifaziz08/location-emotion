@@ -44,6 +44,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.projectlombok:lombok:1.18.22'
 
+    implementation project(':common')
     implementation 'com.h2database:h2'
     runtime('org.springframework.boot:spring-boot-devtools')
     compileOnly 'org.projectlombok:lombok'
@@ -51,7 +52,7 @@ dependencies {
     implementation 'org.apache.kafka:kafka-streams'
     implementation 'org.springframework.cloud:spring-cloud-stream'
     implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka-streams'
-    compile(
+    compile(project(':common'),
             'org.springframework.boot:spring-boot-starter-web',
             'org.springframework.boot:spring-boot-starter-actuator',
             'org.springframework.cloud:spring-cloud-starter-config',

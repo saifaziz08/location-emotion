@@ -1,6 +1,6 @@
 package io.template.zuulrekaconfig.services;
-import io.template.zuulrekaconfig.models.Picture;
-import io.template.zuulrekaconfig.repository.PictureRepository;
+import org.example.models.Picture;
+import org.example.repository.PictureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;

@@ -1,10 +1,10 @@
 package org.example.components;
 
-import io.template.zuulrekaconfig.models.Metrics;
-import io.template.zuulrekaconfig.models.Picture;
-import io.template.zuulrekaconfig.models.RecalculationQueue;
-import io.template.zuulrekaconfig.repository.PictureRepository;
-import io.template.zuulrekaconfig.repository.RecalculationRepository;
+import org.example.models.Metrics;
+import org.example.models.Picture;
+import org.example.models.RecalculationQueue;
+import org.example.repository.PictureRepository;
+import org.example.repository.RecalculationRepository;
 import org.example.services.FacialAlgosService;
 import org.example.services.PersistenceService;
 import org.springframework.beans.factory.annotation.Autowired;

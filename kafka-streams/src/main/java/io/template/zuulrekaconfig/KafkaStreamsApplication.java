@@ -9,17 +9,12 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.scheduling.annotation.EnableScheduling;
-
-import javax.annotation.PostConstruct;
 import java.sql.SQLException;
-import java.util.Arrays;
 
 @EnableEurekaClient
 @SpringBootApplication
-@EntityScan("io.template.zuulrekaconfig.models")
-@EnableScheduling
-@EnableJpaRepositories("io.template.zuulrekaconfig.repository")
+@EntityScan("org.example.models")
+@EnableJpaRepositories("org.example.repository")
 public class KafkaStreamsApplication {
 
   @Autowired

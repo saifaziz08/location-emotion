@@ -11,6 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class FacialAlgosService {
     String pathToPicture;
     public static final int ALGO_COUNT = 2;
+
+    Random random = new Random();
     public Map<String, Map<String, Double>> findResultsFromAlgos(String pathToPicture) {
         this.pathToPicture = pathToPicture;
         Map<String, Map<String, Double>> results = new ConcurrentHashMap<>();
@@ -21,7 +23,6 @@ public class FacialAlgosService {
     }
     private Map<String, Double> findMetricsRandomly() {
         //analyze the pic by an algorithm created internally or third party for the picture
-        Random random = new Random();
         Map<String, Double> result = new HashMap<>();
         result.put("happy", random.nextDouble());
         result.put("sad", random.nextDouble());

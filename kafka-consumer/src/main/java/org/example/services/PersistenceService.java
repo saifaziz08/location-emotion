@@ -1,8 +1,7 @@
 package org.example.services;
-
-import io.template.zuulrekaconfig.models.Metrics;
-import io.template.zuulrekaconfig.models.Picture;
-import io.template.zuulrekaconfig.repository.MetricsRepository;
+import org.example.models.Metrics;
+import org.example.models.Picture;
+import org.example.repository.MetricsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
