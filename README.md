@@ -51,8 +51,10 @@
  + __zuul cloud-config__ --> http://localhost:9999/zuul/default
  
  + __kafka-streams cloud-config__ --> http://localhost:9999/kafka-streams/default
- + __kafka-streams__ (send post request with picture attached to body as form-data) -> http://localhost:8080/kafka-streams/post?longitude=1.0&latitude=1.0&user=sa
+ + __kafka-streams__ (send post request with picture attached to body as form-data) --> http://localhost:8080/kafka-streams/post?longitude=1.0&latitude=1.0&user=sa
  
  + __kafka-streams__ (send get request with username) 
  -> http://localhost:8080/kafka-streams/distributions/user
+ 
+ + __kafka-streams__ (send get request with username) -->  http://localhost:8080/kafka-streams/picture/user
 
