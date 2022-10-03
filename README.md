@@ -7,6 +7,9 @@
 + [Confluent](https://docs.confluent.io/platform/current/installation/installing_cp/zip-tar.html#get-the-software)
 
 #### Run
++ Download Confluent and setup CONFLUENT_HOME environment variable, run kafka server by:
+  `confluent local services kafka start`
+
 + Start each component in this order - waiting on the previous component to be completely started:
   + eureka component 
 
@@ -23,15 +26,21 @@
   + kafka-streams _(wait for cloud-config & zuul to start)_
 
      `cd kafka-streams/build/libs && java -jar kafka-streams-0.0.1-SNAPSHOT.jar`
-  + 
+
   + kafka-consumer _(wait for kafka-streams)_
 
     `cd kafka-consumer/build/libs && java -jar kafka-consumer-0.0.1-SNAPSHOT.jar`
+  
+  + scheduled-service _(wait for kafka-consumer)_
+
+    `cd scheduled-service/build/libs && java -jar scheduled-service-0.0.1-SNAPSHOT.jar`
+
 
 #### Verification
 + start all of the components
 + hit the zuul endpoint that should call through to the netflix-protected api, expect output that reads `hello world!`
   `curl http://localhost:8080/kafka-streams/hello`
++ pictures send via post request are uploaded into the uploads folder
 
 #### Useful endpoints
 
@@ -42,3 +51,6 @@
  + __zuul cloud-config__ --> http://localhost:9999/zuul/default
  
  + __kafka-streams cloud-config__ --> http://localhost:9999/kafka-streams/default
+ + __kafka-streams__ (send post request with picture attached to body as form-data) -> http://localhost:8080/kafka-streams/post?longitude=1.0&latitude=1.0&user=sa
+ + __kafka-streams__ (send get request with username) -> http://localhost:8080/kafka-streams/distributions/user
+
